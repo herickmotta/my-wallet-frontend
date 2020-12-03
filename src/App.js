@@ -4,6 +4,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import {UserProvider} from './contexts/UserContext';
 import Home from './pages/Home';
+import OperationPage from './pages/OperationPage';
 export default function App(){
     return(
         <UserProvider>
@@ -14,6 +15,9 @@ export default function App(){
                     </Route>
                     <Route path='/sign-up'>
                         <SignUp/>
+                    </Route>
+                    <Route path='/new/:operationType'>
+                        <OperationPage/>
                     </Route>
                     <Route path='/' exact>
                         <Home/>

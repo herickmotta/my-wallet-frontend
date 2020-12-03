@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TitleHeader from '../components/TitleHeader';
 import {Link, useHistory} from 'react-router-dom';
-import {ChangeSign,Page,SignForm,Button} from '../components/shared/sign'
+import {ChangeSign,Page,Form,Button} from '../components/shared/sign'
 import axios from 'axios';
 
 export default function SignUp(){
@@ -28,7 +28,7 @@ export default function SignUp(){
     return(
         <Page>
             <TitleHeader/>
-            <SignForm onSubmit={submitForm}>
+            <Form onSubmit={submitForm}>
                 <input
                     type="text"
                     value={name}
@@ -63,7 +63,7 @@ export default function SignUp(){
                 />
                 
                 <Button>Sign Up</Button>
-            </SignForm>
+            </Form>
             <ChangeSign>
                 <Link to='/sign-in'>Already have an account?</Link>
             </ChangeSign>

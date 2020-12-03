@@ -11,19 +11,17 @@ export const Page = styled.div`
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    width:100%;
-    height:100%;
+    height:100vh;
 `
-export const SignForm = styled.form`
+export const Form = styled.form`
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:20px;
-    width:100%;
-    height:100%;
+    padding:20px 0;
+    width:85vw;
     input{
         height:58px;
-        width:80%;
+        width:100%;
         border-radius:5px;
         padding:15px;
         margin-bottom:10px;
@@ -36,7 +34,7 @@ export const SignForm = styled.form`
 `
 export const Button = styled.button`
     background: #A328D6;
-    width: 80%;
+    width: 100%;
     color:#FFF;
     height:58px;
     border-radius:5px;

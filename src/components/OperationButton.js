@@ -1,9 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function OperationButton(props){
+    const history = useHistory();
     return(
-        <Button>
+        <Button onClick={()=>history.push(`/new/${props.op}`)}>
             {props.children}
         </Button>
     )

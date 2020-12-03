@@ -1,18 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import OperationButton from './OperationButton';
-import {IoAddCircleOutline,IoRemoveCircleOutline} from 'react-icons/io5'
+import { IoAddCircleOutline, IoRemoveCircleOutline } from 'react-icons/io5'
 export default function OperationsList() {
-
     return (
         <List>
-            <OperationButton>
-                <IoAddCircleOutline className='thick'/>
-                New in
-            </OperationButton>
-            <OperationButton>
-                <IoRemoveCircleOutline className='thick'/>
-                New out
+            <OperationButton op="input">
+                <IoAddCircleOutline className='thick' />
+                    New input
+             </OperationButton>
+            <OperationButton op="output">
+                <IoRemoveCircleOutline className='thick' />
+                    New output
             </OperationButton>
         </List>
     );
