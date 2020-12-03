@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import {UserProvider} from './contexts/UserContext';
+import Home from './pages/Home';
 export default function App(){
     return(
         <UserProvider>
@@ -14,8 +15,8 @@ export default function App(){
                     <Route path='/sign-up'>
                         <SignUp/>
                     </Route>
-                    <Route path='/'>
-                        <h1>Home</h1>
+                    <Route path='/' exact>
+                        <Home/>
                     </Route>
                 </Switch>
             </Router>
