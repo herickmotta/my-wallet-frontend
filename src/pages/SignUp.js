@@ -3,6 +3,7 @@ import TitleHeader from '../components/TitleHeader';
 import {Link, useHistory} from 'react-router-dom';
 import {ChangeSign,Page,Form,Button} from '../components/shared/sign'
 import axios from 'axios';
+import ErrorBox from '../components/ErrorBox';
 
 export default function SignUp(){
     const [email,setEmail] = useState('');
@@ -10,6 +11,7 @@ export default function SignUp(){
     const [password,setPassword] = useState('');
     const [confirmPassword,setConfirmPassword] = useState('');
     const [error,setError] = useState(null);
+    
     const history = useHistory();
     
     function submitForm(e){
@@ -21,9 +23,11 @@ export default function SignUp(){
                         confirmPassword,
                     });
         req.then(()=>{
-            alert('sucess');
             return history.push('/sign-in');
-        }).catch(e=>alert(e));      
+        }).catch((error)=>{
+            const { response } = error;
+            if (response.data.error) return setError(response.data.error);
+        });    
     }
     return(
         <Page>
@@ -63,6 +67,7 @@ export default function SignUp(){
                 />
                 
                 <Button>Sign Up</Button>
+                {error && <ErrorBox>{error}</ErrorBox>}
             </Form>
             <ChangeSign>
                 <Link to='/sign-in'>Already have an account?</Link>

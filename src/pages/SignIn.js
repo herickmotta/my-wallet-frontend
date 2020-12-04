@@ -4,6 +4,7 @@ import {Link, useHistory} from 'react-router-dom';
 import {ChangeSign,Page,Form,Button} from '../components/shared/sign'
 import axios from 'axios';
 import { useUserContext } from '../contexts/UserContext';
+import ErrorBox from '../components/ErrorBox';
 export default function SignIn(){
     const {user,setUser} = useUserContext();
     const [email,setEmail] = useState('');
@@ -20,7 +21,10 @@ export default function SignIn(){
             console.log(response);
             setUser(response.data);
             history.push('/');
-        }).catch((e)=>alert(e));
+        }).catch((error)=>{
+            const { response } = error;
+            if (response.data.error) return setError(response.data.error);
+        });
     }
 
     return(
@@ -45,6 +49,7 @@ export default function SignIn(){
                 />
                 
                 <Button>Sign In</Button>
+                {error && <ErrorBox>{error}</ErrorBox>}
             </Form>
             <ChangeSign>
                 <Link to='/sign-up'>No account?</Link>

@@ -25,7 +25,7 @@ export default function Home() {
     }, []);
 
     function getOperations() {
-        axios.get(`http://localhost:3000/api/`,
+        axios.get(`http://localhost:3000/api/registers`,
             {
                 headers: {
                     'Authorization': `Bearer ${user.token}`

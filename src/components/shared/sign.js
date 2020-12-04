@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ChangeSign = styled.div`
-    margin:20px;
     font-family: 'Raleway',sans-serif;
     font-size:15px;  
     color:#fff;
@@ -17,7 +16,7 @@ export const Form = styled.form`
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:20px 0;
+    padding:20px 20px 10px 20px;
     width:85vw;
     input{
         height:58px;
@@ -40,5 +39,6 @@ export const Button = styled.button`
     border-radius:5px;
     font-size:20px;
     font-weight:bold;
+    margin-bottom: 15px;
 `
 

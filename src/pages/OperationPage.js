@@ -20,7 +20,7 @@ export default function OperationPage() {
 
     function submitForm(e) {
         e.preventDefault();
-        axios.post(`http://localhost:3000/api/new/`, {
+        axios.post(`http://localhost:3000/api/registers/new/`, {
             value,
             description,
             type: operationType,
