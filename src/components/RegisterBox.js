@@ -15,14 +15,14 @@ export default function RegisterBox(){
                     'Authorization': `Bearer ${user.token}`
                 }
             })
-            .then((response) => setOperations(response.data))
+            .then((response) => setOperations(response.data.reverse()))
             .catch((e)=>console.log(e));
     }
     useEffect(()=>{
         setBalance(user.balance);
         getOperations();
-    });
-
+    },[]);
+    
     function capitalize(string){
         return string[0].toUpperCase() + string.substring(1);
     }
