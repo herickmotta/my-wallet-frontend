@@ -6,10 +6,13 @@ import OperationsList from '../components/OperationsList';
 import { Page } from '../components/shared/page';
 import { Header } from '../components/shared/Header';
 import axios from 'axios';
+import UserNotFound from '../components/UserNotFound';
 import RegisterBox from '../components/RegisterBox';
+import SignIn from './SignIn';
 export default function Home() {
     const history = useHistory();
     const { user, setUser } = useUserContext();
+    
 
     useEffect(() => {
         updateUser();
@@ -51,6 +54,9 @@ export default function Home() {
         return string[0].toUpperCase() + string.substring(1);
     }
 
+    if (!user) {
+        return (<SignIn/>);
+    }
     return (
         <Page>
             <Header>

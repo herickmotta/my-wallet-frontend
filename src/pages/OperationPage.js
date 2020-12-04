@@ -7,8 +7,8 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 import { Header } from '../components/shared/Header';
 import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
-import UserNotFound from '../components/UserNotFound';
 import ErrorBox from '../components/ErrorBox';
+import SignIn from './SignIn';
 export default function OperationPage() {
     const { user, setUser } = useUserContext();
     const { operationType } = useParams();
@@ -18,7 +18,7 @@ export default function OperationPage() {
     const history = useHistory();
     const [error,setError] = useState(null);
     if (!user) {
-        return(<UserNotFound/>);
+        return (<SignIn/>);
     }
 
     function submitForm(e) {
