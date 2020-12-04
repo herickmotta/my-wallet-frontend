@@ -26,7 +26,7 @@ export default function OperationPage() {
         if(isButtonDisabled) return;
         setIsButtonDisabled(true);
         value = value.replace(/,/,'.');
-        axios.post(`https://herickmotta-my-wallet.herokuapp.com/api/registers/new/`, {
+        axios.post(`${env.BACK_URL}/api/registers/new/`, {
             value,
             description,
             type: operationType,

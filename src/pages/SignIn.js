@@ -12,6 +12,7 @@ export default function SignIn(){
     const [error,setError] = useState(null);
     const [isButtonDisabled,setIsButtonDisabled] = useState(false);
     const history = useHistory();
+
     function submitForm(e){
         e.preventDefault();
         if(isButtonDisabled) return;

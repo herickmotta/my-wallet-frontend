@@ -4,7 +4,6 @@ import {Link, useHistory} from 'react-router-dom';
 import {ChangeSign,Page,Form,Button} from '../components/shared/sign'
 import axios from 'axios';
 import ErrorBox from '../components/ErrorBox';
-
 export default function SignUp(){
     const [email,setEmail] = useState('');
     const [name,setName] = useState('');
@@ -13,12 +12,11 @@ export default function SignUp(){
     const [error,setError] = useState(null);
     const [isButtonDisabled,setIsButtonDisabled] = useState(false);
     const history = useHistory();
-    
+   
     function submitForm(e){
         e.preventDefault();
         if(isButtonDisabled) return;
         setIsButtonDisabled(true);
-
         const req = axios.post(`https://herickmotta-my-wallet.herokuapp.com/api/users/sign-up`,{
                         email,
                         name,

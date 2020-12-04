@@ -19,6 +19,7 @@
     "babel-loader": "^8.2.2",
     "dayjs": "^1.9.6",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
