@@ -5,17 +5,18 @@ import { Button, Form } from '../components/shared/sign';
 import { useUserContext } from '../contexts/UserContext';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import { Header } from '../components/shared/Header';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
+import UserNotFound from '../components/UserNotFound';
 export default function OperationPage() {
     const { user, setUser } = useUserContext();
     const { operationType } = useParams();
     const [value, setValue] = useState('');
     const [description, setDescription] = useState('');
-
-    useEffect(() => {
-        if (!user) return history.push('/sign-in');
-    }, [])
+    const history = useHistory();
+    if (!user) {
+        return(<UserNotFound/>);
+    }
 
     function submitForm(e) {
         e.preventDefault();
@@ -27,7 +28,7 @@ export default function OperationPage() {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
-        }).then(res => console.log(res))
+        }).then(res => history.push('/'))
         .catch(e=>console.log(e));
     }
 
@@ -35,7 +36,7 @@ export default function OperationPage() {
         <Page>
             <Header>
                 {`New ${operationType}`}
-                <IoArrowBackOutline />
+                <div onClick={()=>history.push('/')}><IoArrowBackOutline /></div>
             </Header>
             <Form onSubmit={(e) => submitForm(e)}>
                 <ValueInput

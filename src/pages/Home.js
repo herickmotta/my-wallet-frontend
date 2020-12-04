@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useUserContext } from '../contexts/UserContext';
 import { IoExitOutline } from "react-icons/io5";
 import styled from 'styled-components';
@@ -8,37 +8,64 @@ import { Page } from '../components/shared/page';
 import { Header } from '../components/shared/Header';
 import axios from 'axios';
 import dayjs from 'dayjs';
+import UserNotFound from '../components/UserNotFound';
 export default function Home() {
+    const history = useHistory();
     const { user, setUser } = useUserContext();
+    if (!user) {
+        return(<UserNotFound/>);
+    }
+
     const [operations, setOperations] = useState([]);
-    const [balance,setBalance] = useState(user.balance);
-    console.log(user);
-    if (!user) return history.push('/sign-in');
+    const [balance, setBalance] = useState(user.balance);
+    
     useEffect(() => {
         getOperations();
         updateUser();
     }, []);
 
-    function getOperations(){
-        const headers = {
-            'Authorization': `Bearer ${user.token}`
-        };
-        axios.get(`http://localhost:3000/api/`, { headers })
+    function getOperations() {
+        axios.get(`http://localhost:3000/api/`,
+            {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             .then((response) => setOperations(response.data));
     }
-    function updateUser(){
-        const headers = {
-            'Authorization': `Bearer ${user.token}`
-        };
-        axios.get(`http://localhost:3000/api/users/`, { headers })
-        .then((response) => setBalance(response.data.balance));
-        
+    function updateUser() {
+        axios.get(`http://localhost:3000/api/users/`,
+            {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            .then((response) => {
+                setBalance(response.data.balance);
+                setUser({ ...user, balance: response.data.balance });
+            });
+
     }
+    function onSignOutRequest() {
+        axios.post(
+            'http://localhost:3000/api/users/sign-out',
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${user.token}`,
+              },
+            },
+          )
+          .then((_r) => {
+            setUser(null);
+          })
+          .catch((_e) => setUser(null));
+      };
     return (
         <Page>
             <Header>
                 <h1>{`Olá, ${user.name}`}</h1>
-                <IoExitOutline />
+                <div onClick={onSignOutRequest}><IoExitOutline /></div>
             </Header>
             {
                 operations.length === 0
