@@ -34,7 +34,7 @@ export default function RegisterBox(){
                     <Box><EmptyBox><h1>No registers yet</h1></EmptyBox></Box>
                     :
                     <Box>
-                        <div>
+                        <div className = "registers">
                             {
                                 operations.map((op) =>
                                     <Op color={op.type === 'input' ? '#03AC00' : '#C70000'} key={op.id}>
@@ -56,7 +56,7 @@ export default function RegisterBox(){
 
                         <Balance color={user.balance < 0 ? '#C70000' : '#03AC00'}>
                             <div className='title'>BALANCE</div>
-                            <div className='balance'>{balance.toFixed(2)}</div>
+                            <div className='totalValue'>{balance.toFixed(2)}</div>
                         </Balance>
                     </Box>
             }
@@ -72,8 +72,11 @@ const Balance = styled.div`
     font-size:17px;
     .title{
         font-weight:bold;
+        display:flex;
+        align-items:flex-end;
     }
-    .balance{
+    .totalValue{
+        padding-top:10px;
         color: ${props => props.color};
     }
 `
@@ -106,6 +109,10 @@ const Box = styled.ul`
     display:flex;
     flex-direction:column;
     justify-content:space-between;
+    .registers{
+        flex-grow:1;
+        overflow-y: scroll;
+    }
 `
 const EmptyBox = styled.div`
     font-family: 'Raleway',sans-serif;
