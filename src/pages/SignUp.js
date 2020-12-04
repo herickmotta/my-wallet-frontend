@@ -15,9 +15,10 @@ export default function SignUp(){
     const history = useHistory();
     
     function submitForm(e){
+        e.preventDefault();
         if(isButtonDisabled) return;
         setIsButtonDisabled(true);
-        e.preventDefault();
+
         const req = axios.post(`https://herickmotta-my-wallet.herokuapp.com/api/users/sign-up`,{
                         email,
                         name,

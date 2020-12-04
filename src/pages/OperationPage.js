@@ -22,9 +22,9 @@ export default function OperationPage() {
     }
 
     function submitForm(e) {
+        e.preventDefault();
         if(isButtonDisabled) return;
         setIsButtonDisabled(true);
-        e.preventDefault();
         value = value.replace(/,/,'.');
         axios.post(`https://herickmotta-my-wallet.herokuapp.com/api/registers/new/`, {
             value,
