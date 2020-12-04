@@ -11,7 +11,9 @@ import SignIn from './SignIn';
 export default function Home() {
     const history = useHistory();
     const { user, setUser } = useUserContext();
-    
+    if (!user) {
+        return (<SignIn/>);
+    }
 
     useEffect(() => {
         updateUser();
@@ -53,9 +55,7 @@ export default function Home() {
         return string[0].toUpperCase() + string.substring(1);
     }
 
-    if (!user) {
-        return (<SignIn/>);
-    }
+    
     return (
         <Page>
             <Header>
