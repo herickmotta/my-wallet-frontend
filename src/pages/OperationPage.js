@@ -11,7 +11,7 @@ import UserNotFound from '../components/UserNotFound';
 export default function OperationPage() {
     const { user, setUser } = useUserContext();
     const { operationType } = useParams();
-    const [value, setValue] = useState('');
+    let [value, setValue] = useState('');
     const [description, setDescription] = useState('');
     const history = useHistory();
     if (!user) {
@@ -20,6 +20,7 @@ export default function OperationPage() {
 
     function submitForm(e) {
         e.preventDefault();
+        value = value.replace(/,/,'.');
         axios.post(`http://localhost:3000/api/registers/new/`, {
             value,
             description,
