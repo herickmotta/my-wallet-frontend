@@ -32,7 +32,7 @@ export const Form = styled.form`
     }
 `
 export const Button = styled.button`
-    background: #A328D6;
+    background: ${props=>props.color || '#A328D6'} ;
     width: 100%;
     color:#FFF;
     height:58px;

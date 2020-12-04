@@ -11,10 +11,12 @@ export default function SignUp(){
     const [password,setPassword] = useState('');
     const [confirmPassword,setConfirmPassword] = useState('');
     const [error,setError] = useState(null);
-    
+    const [isButtonDisabled,setIsButtonDisabled] = useState(false);
     const history = useHistory();
     
     function submitForm(e){
+        if(isButtonDisabled) return;
+        setIsButtonDisabled(true);
         e.preventDefault();
         const req = axios.post(`https://herickmotta-my-wallet.herokuapp.com/api/users/sign-up`,{
                         email,
@@ -23,9 +25,11 @@ export default function SignUp(){
                         confirmPassword,
                     });
         req.then(()=>{
+            setIsButtonDisabled(false);
             return history.push('/sign-in');
         }).catch((error)=>{
             const { response } = error;
+            setIsButtonDisabled(false);
             if (response.data.error) return setError(response.data.error);
         });    
     }
@@ -66,7 +70,7 @@ export default function SignUp(){
                     required
                 />
                 
-                <Button>Sign Up</Button>
+                <Button color={isButtonDisabled ? '#c850fc' : null}>Sign Up</Button>
                 {error && <ErrorBox>{error}</ErrorBox>}
             </Form>
             <ChangeSign>

@@ -12,6 +12,7 @@ import ErrorBox from '../components/ErrorBox';
 export default function OperationPage() {
     const { user, setUser } = useUserContext();
     const { operationType } = useParams();
+    const [isButtonDisabled,setIsButtonDisabled] = useState(false);
     let [value, setValue] = useState('');
     const [description, setDescription] = useState('');
     const history = useHistory();
@@ -21,6 +22,8 @@ export default function OperationPage() {
     }
 
     function submitForm(e) {
+        if(isButtonDisabled) return;
+        setIsButtonDisabled(true);
         e.preventDefault();
         value = value.replace(/,/,'.');
         axios.post(`https://herickmotta-my-wallet.herokuapp.com/api/registers/new/`, {
@@ -31,9 +34,13 @@ export default function OperationPage() {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
-        }).then(res => history.push('/'))
+        }).then(res => {
+            setIsButtonDisabled(false);
+            history.push('/')
+        })
         .catch((error)=>{
             const { response } = error;
+            setIsButtonDisabled(false);
             if (response.data.error) return setError(response.data.error);
         });
     }
@@ -61,7 +68,7 @@ export default function OperationPage() {
                     name="description"
                     placeholder="Description"
                 />
-                <Button>
+                <Button color={isButtonDisabled ? '#c850fc' : null}>
                     {`Save ${operationType}`}
                 </Button>
                 {error && <ErrorBox>{error}</ErrorBox>}
