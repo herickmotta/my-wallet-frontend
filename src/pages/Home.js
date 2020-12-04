@@ -6,14 +6,10 @@ import OperationsList from '../components/OperationsList';
 import { Page } from '../components/shared/page';
 import { Header } from '../components/shared/Header';
 import axios from 'axios';
-import UserNotFound from '../components/UserNotFound';
 import RegisterBox from '../components/RegisterBox';
 export default function Home() {
     const history = useHistory();
     const { user, setUser } = useUserContext();
-    if (!user) {
-        return(<UserNotFound/>);
-    }
 
     useEffect(() => {
         updateUser();
