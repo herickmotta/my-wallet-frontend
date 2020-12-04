@@ -13,7 +13,7 @@ export default function SignIn(){
     const history = useHistory();
     function submitForm(e){
         e.preventDefault();
-        const req = axios.post(`http://localhost:3000/api/users/sign-in`,{
+        const req = axios.post(`https://herickmotta-my-wallet.herokuapp.com/api/users/sign-in`,{
                 email,
                 password,
             });

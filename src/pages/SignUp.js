@@ -16,7 +16,7 @@ export default function SignUp(){
     
     function submitForm(e){
         e.preventDefault();
-        const req = axios.post(`http://localhost:3000/api/users/sign-up`,{
+        const req = axios.post(`https://herickmotta-my-wallet.herokuapp.com/api/users/sign-up`,{
                         email,
                         name,
                         password,

@@ -23,7 +23,7 @@ export default function OperationPage() {
     function submitForm(e) {
         e.preventDefault();
         value = value.replace(/,/,'.');
-        axios.post(`http://localhost:3000/api/registers/new/`, {
+        axios.post(`https://herickmotta-my-wallet.herokuapp.com/api/registers/new/`, {
             value,
             description,
             type: operationType,

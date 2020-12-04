@@ -20,7 +20,7 @@ export default function Home() {
     }, []);
 
     function updateUser() {
-        axios.get(`http://localhost:3000/api/users/`,
+        axios.get(`https://herickmotta-my-wallet.herokuapp.com/api/users/`,
             {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
@@ -37,7 +37,7 @@ export default function Home() {
     }
     function onSignOutRequest() {
         axios.post(
-            'http://localhost:3000/api/users/sign-out',
+            'https://herickmotta-my-wallet.herokuapp.com/api/users/sign-out',
             {},
             {
               headers: {

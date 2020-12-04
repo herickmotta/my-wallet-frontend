@@ -9,7 +9,7 @@ export default function RegisterBox(){
     const [operations, setOperations] = useState([]);
     const [balance, setBalance] = useState(user.balance);
     function getOperations() {
-        axios.get(`http://localhost:3000/api/registers`,
+        axios.get(`https://herickmotta-my-wallet.herokuapp.com/api/registers`,
             {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
