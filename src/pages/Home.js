@@ -43,6 +43,10 @@ export default function Home() {
             .then((response) => {
                 setBalance(response.data.balance);
                 setUser({ ...user, balance: response.data.balance });
+            }).catch(({response})=>{
+                if(response.status === 401){
+                    history.push('/sign-in');
+                }
             });
 
     }
@@ -61,10 +65,15 @@ export default function Home() {
           })
           .catch((_e) => setUser(null));
       };
+
+    function capitalize(string){
+        return string[0].toUpperCase() + string.substring(1);
+    }
+
     return (
         <Page>
             <Header>
-                <h1>{`Olá, ${user.name}`}</h1>
+                <h1>{`Olá, ${capitalize(user.name)}`}</h1>
                 <div onClick={onSignOutRequest}><IoExitOutline /></div>
             </Header>
             {
@@ -82,7 +91,7 @@ export default function Home() {
                                                 {dayjs(op.time).format('DD/MM')}
                                             </div>
                                             <div className='description'>
-                                                {op.description}
+                                                {capitalize(op.description)}
                                             </div>
                                         </div>
                                         <div className='value'>
