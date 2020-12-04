@@ -8,12 +8,14 @@ import { Header } from '../components/shared/Header';
 import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import UserNotFound from '../components/UserNotFound';
+import ErrorBox from '../components/ErrorBox';
 export default function OperationPage() {
     const { user, setUser } = useUserContext();
     const { operationType } = useParams();
     let [value, setValue] = useState('');
     const [description, setDescription] = useState('');
     const history = useHistory();
+    const [error,setError] = useState(null);
     if (!user) {
         return(<UserNotFound/>);
     }
@@ -30,7 +32,10 @@ export default function OperationPage() {
                 'Authorization': `Bearer ${user.token}`
             }
         }).then(res => history.push('/'))
-        .catch(e=>console.log(e));
+        .catch((error)=>{
+            const { response } = error;
+            if (response.data.error) return setError(response.data.error);
+        });
     }
 
     return (
@@ -59,6 +64,7 @@ export default function OperationPage() {
                 <Button>
                     {`Save ${operationType}`}
                 </Button>
+                {error && <ErrorBox>{error}</ErrorBox>}
             </Form>
         </Page>
     );
