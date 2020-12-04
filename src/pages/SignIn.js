@@ -17,6 +17,7 @@ export default function SignIn(){
                 password,
             });
         req.then((response)=>{
+            console.log(response);
             setUser(response.data);
             history.push('/');
         }).catch((e)=>alert(e));
