@@ -4,7 +4,7 @@
 </p>
 
 ### DEMO-APP
-bit.ly/3kEcwEu
+https://bit.ly/3kEcwEu
 
 ## Objective
 <p>
