@@ -3,13 +3,16 @@
   <img src="./public/img/logo.png" width="175" alt="my-wallet" />
 </p>
 
+### DEMO-APP
+bit.ly/3kEcwEu
 
 ## Objective
 <p>
    This is a project to learning propuses. This project its a full stack aplication and has the object to register, log in and check a user account balance and show transaction history.
 </p>
 
-
+### API
+https://github.com/herickmotta/my-wallet-backend
 
 ### Features
 - [x] 'Register user'<br>
