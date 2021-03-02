@@ -47,7 +47,7 @@ The following tools and frameworks were used in the construction of the project:
 
 ### Author
 ---
-Herick Motta
+Herick Motta<br>
 <a href="https://www.linkedin.com/in/herick-motta-aa2142167/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
 <a href="https://github.com/herickmotta"><img src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white" /></a>
 
