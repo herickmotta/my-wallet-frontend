@@ -8,7 +8,7 @@ https://bit.ly/3kEcwEu
 
 ## Objective
 <p>
-   This is a project to learning propuses. This project its a full stack aplication and has the object to register, log in and check a user account balance and show transaction history.
+   This is a project to learning propuses. This project is a full stack application and has the objective to register, log in and check a user account balance and show transaction history.
 </p>
 
 ### API
